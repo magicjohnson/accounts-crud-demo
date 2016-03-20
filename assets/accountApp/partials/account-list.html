@@ -1,0 +1,13 @@
+<div ng-hide="loading">
+    <h3 ng-hide="accounts.length">No accounts</h3>
+
+    <div ng-show="accounts.length">
+        <h3>Account list</h3>
+
+        <table class="table">
+            <tr ng-repeat="account in accounts">
+                <td>{{ account.first_name }} {{ account.last_name }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
