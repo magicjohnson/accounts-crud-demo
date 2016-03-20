@@ -1,1 +1,1 @@
-web: gunicorn fb_app.wsgi --log-file -
+web: gunicorn bank_accounts.wsgi --log-file -
