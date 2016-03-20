@@ -2,6 +2,8 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+base = lambda directory: os.path.join(BASE_DIR, directory)
+
 SECRET_KEY = 'd$og$62t7yoxo_dea*75#olz^#uhmo3(op16d&o1v#*ej(l5s^'
 
 DEBUG = True
@@ -35,7 +37,7 @@ ROOT_URLCONF = 'bank_accounts.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': [base('templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -54,7 +56,7 @@ WSGI_APPLICATION = 'bank_accounts.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': base('db.sqlite3'),
     }
 }
 
@@ -85,6 +87,11 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+STATIC_ROOT = base('staticfiles')
+
+STATICFILES_DIRS = (
+    base("assets"),
+)
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
