@@ -11,7 +11,7 @@ class NoUserException(Exception):
 class AccountSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Account
-        fields = ('url', 'first_name', 'last_name', 'iban')
+        fields = ('id', 'first_name', 'last_name', 'iban')
 
     def create(self, validated_data):
         try:

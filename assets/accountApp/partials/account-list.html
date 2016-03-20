@@ -1,3 +1,5 @@
+<a ui-sref="account-add" class="btn-primary btn-lg nodecoration">Add New Account</a>
+
 <div ng-hide="loading">
     <h3 ng-hide="accounts.length">No accounts</h3>
 
@@ -7,6 +9,11 @@
         <table class="table">
             <tr ng-repeat="account in accounts">
                 <td>{{ account.first_name }} {{ account.last_name }}</td>
+                <td>
+                    <a class="btn btn-primary" ui-sref="account-detail({id:account.id})">View</a>
+                    <a class="btn btn-success" ui-sref="account-edit({id:account.id})">Edit</a>
+                    <a class="btn btn-danger" ng-click="deleteAccount(account)">Delete</a>
+                </td>
             </tr>
         </table>
     </div>

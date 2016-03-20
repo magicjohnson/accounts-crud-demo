@@ -7,6 +7,18 @@ accountApp.config(function ($stateProvider) {
         url: '/accounts/',
         templateUrl: '/static/accountApp/partials/account-list.html',
         controller: 'AccountListController'
+    }).state('account-add', {
+        url: '/accounts/add/',
+        templateUrl: '/static/accountApp/partials/account-add.html',
+        controller: 'AccountAddController'
+    }).state('account-detail', {
+        url: '/accounts/:id/',
+        templateUrl: '/static/accountApp/partials/account-detail.html',
+        controller: 'AccountDetailController'
+    }).state('account-edit', {
+        url: '/accounts/:id/edit/',
+        templateUrl: '/static/accountApp/partials/account-edit.html',
+        controller: 'AccountEditController'
     })
 }).run(function ($state) {
     $state.go('account-list');

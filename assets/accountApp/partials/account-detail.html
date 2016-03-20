@@ -1,0 +1,26 @@
+<div ng-hide="loading">
+    <div ng-show="is404">
+        <h3>Account does not exist</h3>
+    </div>
+
+    <div ng-hide="is404">
+        <h3>Account Details</h3>
+        <table class="table">
+            <tr>
+                <td>First Name</td>
+                <td>{{ account.first_name }}</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>{{ account.last_name }}</td>
+            </tr>
+            <tr>
+                <td>IBAN</td>
+                <td>{{ account.iban }}</td>
+            </tr>
+        </table>
+        <div>
+            <a class="btn btn-primary" ui-sref="account-edit({id:account.id})">Edit</a>
+        </div>
+    </div>
+</div>
