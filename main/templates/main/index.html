@@ -1,37 +1,54 @@
+{% extends 'main/base.html' %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Accounts App</title>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-</head>
+{% load socialaccount %}
 
-<body ng-app="accountApp">
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" ui-sref="account-list">Accounts</a>
+{% block content %}
+    <div ng-app="accountApp">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" ui-sref="account-list">Accounts</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user and not user.is_anonymous %}
+                            <li><a>Hello <b>{{ user.get_full_name|default:user.username }}</b></a></li>
+                            <li>
+                                <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
+                            </li>
+                        {% else %}
+                            <li>
+                            <p class="navbar-btn">
+                                <a class="btn btn-default" href="{% provider_login_url "google" %}">Login with Google</a>
+                            </p>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="row top-buffer">
-            <div class="col-xs-8 col-xs-offset-2">
-                <div ui-view></div>
+        </nav>
+
+        {% if user and not user.is_anonymous %}
+            <div class="container">
+                <div class="row top-buffer">
+                    <div class="col-xs-8">
+                        <div ui-view></div>
+                    </div>
+                </div>
             </div>
-        </div>
+        {% endif %}
     </div>
+{% endblock %}
 
+{% block extra_js %}
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.10/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.10/angular-resource.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
     <script src="{% static "js/app.js" %}"></script>
     <script src="{% static "js/controllers.js" %}"></script>
     <script src="{% static "js/services.js" %}"></script>
-</body>
-</html>
-
+{% endblock %}
 
 
 

@@ -11,7 +11,11 @@
                 <td>{{ account.first_name }} {{ account.last_name }}</td>
                 <td>
                     <a class="btn btn-primary" ui-sref="account-detail({id:account.id})">View</a>
+                </td>
+                <td>
                     <a class="btn btn-success" ui-sref="account-edit({id:account.id})">Edit</a>
+                </td>
+                <td>
                     <a class="btn btn-danger" ng-click="deleteAccount(account)">Delete</a>
                 </td>
             </tr>
