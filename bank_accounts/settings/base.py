@@ -1,8 +1,8 @@
-import os
+from os.path import dirname, abspath, join
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
 
-base = lambda directory: os.path.join(BASE_DIR, directory)
+base = lambda directory: join(BASE_DIR, directory)
 
 SECRET_KEY = 'd$og$62t7yoxo_dea*75#olz^#uhmo3(op16d&o1v#*ej(l5s^'
 
@@ -52,8 +52,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # 'social.apps.django_app.context_processors.backends',
-                # 'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
