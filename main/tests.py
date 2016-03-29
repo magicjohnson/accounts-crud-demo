@@ -24,6 +24,7 @@ class IBANValidatorTest(TestCase):
 
     def test_iban_mod_is_not_1(self):
         self._assert_iban_is_not_valid('DE44500105175407324932')
+        self._assert_iban_is_not_valid('231011Z0000000013701000194410Z21')
 
     def test_valid_iban(self):
         self._assert_iban_is_valid('DE44500105175407324931')

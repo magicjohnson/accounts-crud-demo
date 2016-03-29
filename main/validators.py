@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 @deconstructible
 class IbanValidator(object):
     IBAN_REGEX = _lazy_re_compile(r'^[A-Z0-9]{0,34}$')
-    LETTER_MAP = tuple(zip(string.ascii_uppercase, range(10, 35)))
+    LETTER_MAP = tuple(zip(string.ascii_uppercase, range(10, 36)))
     message = _('IBAN is not valid')
 
     def __init__(self, message=None):
